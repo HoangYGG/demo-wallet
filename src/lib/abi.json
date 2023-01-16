@@ -1,0 +1,37 @@
+[
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [
+      { "type": "uint256", "name": "balance", "internalType": "uint256" }
+    ],
+    "name": "balanceOf",
+    "inputs": [
+      { "type": "address", "name": "tokenOwner", "internalType": "address" }
+    ]
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "name": "_value",
+        "type": "uint256"
+      }
+    ],
+    "name": "transfer",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "signature": "0xa9059cbb",
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

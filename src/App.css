@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -26,6 +27,34 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-chain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.App-SwitchChain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.App-SwitchChain img {
+  cursor: pointer;
+}
+
+.App-tokens {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 16px;
+}
+
+.App-token {
+  display: flex;
+  gap: 16px;
 }
 
 @keyframes App-logo-spin {
