@@ -114,14 +114,17 @@ function App() {
         </div>
 
         {chainConnected && (
-          <div>
-            <input
-              type={"number"}
-              value={value}
-              onChange={(event) => setValue(event.target.value)}
-            />
-            <button onClick={onSendTransaction}>send transaction</button>
-          </div>
+          <>
+            <div>
+              <input
+                type={"number"}
+                value={value}
+                onChange={(event) => setValue(event.target.value)}
+              />
+              <button onClick={onSendTransaction}>send transaction</button>
+            </div>
+            <span style={{ fontSize: 12 }}>//test on polygon</span>
+          </>
         )}
       </div>
     </div>

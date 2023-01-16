@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import abi from "./abi.json";
 import utils from "./utils";
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
+const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
 const requestAccount = () => {
   return provider.send("eth_requestAccounts");
