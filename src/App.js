@@ -48,11 +48,7 @@ function App() {
   }, []);
 
   const fetchChainConnected = async () => {
-    const chainId = await lib.getChainIdConnected(
-      "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-      "0xcb18c155d20e68356d8f5649fa732d6eef001e27",
-      value
-    );
+    const chainId = await lib.getChainIdConnected();
     setChainIdConnected(chainId);
   };
 
@@ -85,7 +81,11 @@ function App() {
   };
 
   const onSendTransaction = async () => {
-    const transactionHash = await lib.performTransaction();
+    const transactionHash = await lib.performTransaction(
+      "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+      "0xcb18c155d20e68356d8f5649fa732d6eef001e27",
+      value
+    );
     alert(transactionHash);
   };
 
