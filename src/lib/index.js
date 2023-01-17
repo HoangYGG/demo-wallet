@@ -32,6 +32,8 @@ const performTransaction = async (
     }
   );
 
+  alert("wait transaction to minted, about 10second"); // remove this line in production
+
   const receipt = await transaction.wait();
 
   return receipt.transactionHash;

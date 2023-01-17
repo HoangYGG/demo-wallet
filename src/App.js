@@ -81,12 +81,26 @@ function App() {
   };
 
   const onSendTransaction = async () => {
-    const transactionHash = await lib.performTransaction(
-      "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-      "0xcb18c155d20e68356d8f5649fa732d6eef001e27",
-      value
-    );
-    alert(transactionHash);
+    try {
+      const transactionHash = await lib.performTransaction(
+        networks.testAddress[chainConnected.chainId].contractAddress,
+        networks.testAddress[chainConnected.chainId].paymentWalletAddress,
+        value
+      );
+      alert(transactionHash);
+    } catch (error) {
+      switch (error.code) {
+        case "UNPREDICTABLE_GAS_LIMIT":
+          alert("không đủ tiền");
+          break;
+        case "ACTION_REJECTED":
+          alert("user denied transaction");
+          break;
+        default:
+          alert("error", error.message);
+          break;
+      }
+    }
   };
 
   return (
@@ -100,20 +114,22 @@ function App() {
           {!chainConnected ? (
             <span>Unknown</span>
           ) : (
-            <img width={25} height={25} src={chainConnected?.image} alt="" />
+            <>
+              <img width={25} height={25} src={chainConnected?.image} alt="" />
+              {chainConnected.name}
+            </>
           )}
         </div>
         <div className="App-SwitchChain">
           Switch network:
           {networks.chainList.map((chain) => (
-            <img
-              onClick={() => requestSwitchChain(chain.chainId)}
+            <div
               key={chain.chainId}
-              src={chain.image}
-              width={25}
-              height={25}
-              alt=""
-            />
+              onClick={() => requestSwitchChain(chain.chainId)}
+            >
+              <img src={chain.image} width={25} height={25} alt="" />
+              <span>{chain.name}</span>
+            </div>
           ))}
         </div>
 
@@ -127,7 +143,6 @@ function App() {
               />
               <button onClick={onSendTransaction}>send transaction</button>
             </div>
-            <span style={{ fontSize: 12 }}>//test on polygon</span>
           </>
         )}
       </div>
